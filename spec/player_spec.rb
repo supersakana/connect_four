@@ -6,5 +6,5 @@ require 'pry-byebug'
 require_relative '../lib/player'
 
 describe Player do
-  # tests to run
+  # code to test
 end

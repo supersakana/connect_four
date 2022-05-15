@@ -12,7 +12,13 @@ class Game
     @round = 1
   end
 
-  def test
+  def play
     @board.print_board
+  end
+
+  # checks if player input is valid
+  def valid?(input)
+    valid_inputs = (1..7).to_a
+    valid_inputs.include?(input)
   end
 end
