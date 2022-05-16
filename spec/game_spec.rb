@@ -37,4 +37,31 @@ describe Game do
       end
     end
   end
+
+  describe '#turn_player' do
+    context 'when the round is odd' do
+      it 'returns the first player' do
+        instance_variable_get(:@round)
+        @round = 3
+        expect(game).to receive(:turn_player).and_return(first_player)
+        game.turn_player
+      end
+    end
+    context 'when the round is even' do
+      it 'returns the second player' do
+        instance_variable_get(:@round)
+        @round = 4
+        expect(game).to receive(:turn_player).and_return(second_player)
+        game.turn_player
+      end
+    end
+  end
+
+  describe '#add_round' do
+    it 'incements the round by 1' do
+      instance_variable_get(:@round)
+      round = game.add_round
+      expect(round).to eq(2)
+    end
+  end
 end
