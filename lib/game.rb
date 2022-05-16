@@ -2,10 +2,13 @@
 
 require 'pry-byebug'
 require_relative 'board'
+require_relative 'display'
 
 # represents the main game
 class Game
   attr_reader :board, :player_one, :player_two, :round
+
+  include Display
 
   def initialize(player_one, player_two)
     @player_one = player_one
@@ -30,8 +33,8 @@ class Game
   # displays prompt for user to make choice
   def play_round
     player = turn_player
-    choice = display_choice(player)
-    verify(choice, player)
+    input = display_choice(player)
+    verify(input, player)
   end
 
   # returns player according to round number
@@ -39,8 +42,18 @@ class Game
     @round.odd? ? @player_one : @player_two
   end
 
-  def verify(choice, player)
-    # code to run
+  def verify(input, player)
+    if valid?(input)
+      update(input, player)
+    else
+      display_error
+      play_round
+    end
+  end
+
+  def valid?(input)
+    valid_inputs = (1..7).to_a
+    valid_inputs.include?(input.to_i)
   end
 
   def add_round

@@ -57,11 +57,21 @@ describe Game do
     end
   end
 
-  describe '#add_round' do
-    it 'incements the round by 1' do
-      instance_variable_get(:@round)
-      round = game.add_round
-      expect(round).to eq(2)
+  describe '#verify' do
+    context 'when a choice is valid' do
+      it 'updates the board and user history' do
+        valid_input = 3
+        expect(game).to receive(:update)
+        game.verify(valid_input, first_player)
+      end
     end
+    # context 'when a choice is invalid' do
+    #   it 'displays error message' do
+    #     # test to run
+    #   end
+    #   it 'recalls #play_round' do
+    #     # test to run
+    #   end
+    # end
   end
 end
