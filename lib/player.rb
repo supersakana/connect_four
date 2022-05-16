@@ -9,4 +9,9 @@ class Player
     @chip = chip
     @history = []
   end
+
+  # determines if user has any winning combinations
+  def winner?
+    # code to run
+  end
 end

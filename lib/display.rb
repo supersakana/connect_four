@@ -2,5 +2,5 @@
 
 # represents the game prompts to be displayed
 module Display
-  # code to run
+#  display messages to run
 end

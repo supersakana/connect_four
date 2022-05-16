@@ -24,4 +24,4 @@ end
 player_one = create_player(1, 'X')
 player_two = create_player(2, 'O')
 game = Game.new(player_one, player_two)
-game.test
+game.play

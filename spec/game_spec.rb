@@ -7,23 +7,33 @@ require 'pry-byebug'
 require_relative '../lib/game'
 
 describe Game do
-  let(:first_player) { instance_double('Player', name: 'Zac', move: 'X') }
-  let(:second_player) { instance_double('Player', name: 'Zoe', move: 'O') }
+  let(:first_player) { double('player', name: 'Zac', move: 'X') }
+  let(:second_player) { double('player', name: 'Zoe', move: 'O') }
   subject(:game) { described_class.new(first_player, second_player) }
 
-  describe '#valid?' do
-    context 'when given a correct input' do
-      it 'returns true' do
-        valid_input = 3
-        result = game.valid?(valid_input)
-        expect(result).to be_truthy
+  describe '#game_loop' do
+    context 'when a single loop runs' do
+      before do
+        allow(first_player).to receive(:winner?).and_return(false, true)
+        allow(second_player).to receive(:winner?).and_return(false)
+        allow(game).to receive(:play_round)
+      end
+      it 'prints the game board' do
+        game.instance_variable_get(:@board)
+        expect(game.board).to receive(:print_board).once
+        game.game_loop
       end
     end
-    context 'when given an invalid input' do
-      it 'returns false' do
-        invalid_input = 8
-        result = game.valid?(invalid_input)
-        expect(result).to be_falsey
+    context 'when a winner is declared after 5 rounds' do
+      before do
+        allow(first_player).to receive(:winner?).and_return(false, false, false, false, false, true)
+        allow(second_player).to receive(:winner?).and_return(false, false, false, false, false)
+        allow(game).to receive(:play_round)
+      end
+      it 'breaks the loop' do
+        game.instance_variable_get(:@board)
+        expect(game.board).to receive(:print_board).exactly(5).times
+        game.game_loop
       end
     end
   end
