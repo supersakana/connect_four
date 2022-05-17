@@ -65,13 +65,19 @@ describe Game do
         game.verify(valid_input, first_player)
       end
     end
-    # context 'when a choice is invalid' do
-    #   it 'displays error message' do
-    #     # test to run
-    #   end
-    #   it 'recalls #play_round' do
-    #     # test to run
-    #   end
-    # end
+    context 'when a choice is invalid' do
+      it 'displays error message' do
+        allow(game).to receive(:play_round)
+        invalid_input = 9
+        expect(game).to receive(:display_error)
+        game.verify(invalid_input, first_player)
+      end
+      it 'recalls #play_round' do
+        allow(game).to receive(:display_error)
+        invalid_input = 'q'
+        expect(game).to receive(:play_round)
+        game.verify(invalid_input, first_player)
+      end
+    end
   end
 end

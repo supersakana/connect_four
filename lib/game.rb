@@ -51,9 +51,14 @@ class Game
     end
   end
 
+  # next method to test
   def valid?(input)
     valid_inputs = (1..7).to_a
     valid_inputs.include?(input.to_i)
+  end
+
+  def update(input, player)
+    # code to run
   end
 
   def add_round
