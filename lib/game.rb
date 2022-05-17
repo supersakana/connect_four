@@ -3,6 +3,7 @@
 require 'pry-byebug'
 require_relative 'board'
 require_relative 'display'
+require_relative 'player'
 
 # represents the main game
 class Game
@@ -33,7 +34,7 @@ class Game
   # displays prompt for user to make choice
   def play_round
     player = turn_player
-    input = display_choice(player)
+    input = display_choice(player.name)
     verify(input, player)
   end
 
@@ -51,17 +52,16 @@ class Game
     end
   end
 
-  # next method to test
+  # what if there where no more slots in (number)? How can you return invalid?
   def valid?(input)
     valid_inputs = (1..7).to_a
     valid_inputs.include?(input.to_i)
   end
 
   def update(input, player)
-    # code to run
-  end
-
-  def add_round
     @round += 1
+    p "the board and user history has been updted! #{player.name} - #{input}"
+    @board.update_board(input, player.move)
+    # player.update_history(input)
   end
 end

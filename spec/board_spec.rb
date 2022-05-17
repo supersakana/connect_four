@@ -8,5 +8,5 @@ require_relative '../lib/board'
 
 describe Board do
   subject(:game_board) { described_class.new }
-  # tests to run
+  describe update_board
 end

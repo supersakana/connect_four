@@ -20,4 +20,16 @@ class Board
   def print_board
     @cells.each { |row| p row }
   end
+
+  def update_board(_input, move)
+    i = 6
+    until i.zero?
+      if @cells[i].include?(input)
+        @cells[i] = move
+        break
+      else
+        i -= 1
+      end
+    end
+  end
 end

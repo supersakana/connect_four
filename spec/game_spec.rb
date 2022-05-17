@@ -80,4 +80,21 @@ describe Game do
       end
     end
   end
+
+  describe '#valid?' do
+    context 'when a valid input is passed' do
+      it 'returns true' do
+        valid_input = '2'
+        result = game.valid?(valid_input)
+        expect(result).to be_truthy
+      end
+    end
+    context 'when an invalid input is passed' do
+      it 'returns false' do
+        invalid_input = '0'
+        result = game.valid?(invalid_input)
+        expect(result).to be_falsey
+      end
+    end
+  end
 end

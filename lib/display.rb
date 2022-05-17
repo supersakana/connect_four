@@ -2,9 +2,8 @@
 
 # represents the game prompts to be displayed
 module Display
-
   def display_choice(player)
-    puts "#{player.name}, choose a column..."
+    puts "#{player}, choose a column..."
     gets.chomp
   end
 
