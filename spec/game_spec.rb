@@ -97,4 +97,18 @@ describe Game do
       end
     end
   end
+
+  # to be continued
+  describe '#update' do
+    it 'increments a round by 1' do
+      instance_variable_get(:@board)
+      instance_variable_get(:@round)
+
+      allow(game.board).to receive(:update_board)
+      allow(first_player).to receive(:update_history)
+
+      expect(@round).to eq(4)
+      game.update(1, first_player)
+    end
+  end
 end

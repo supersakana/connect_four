@@ -21,11 +21,11 @@ class Board
     @cells.each { |row| p row }
   end
 
-  def update_board(_input, move)
+  def update_board(input, chip)
     i = 6
     until i.zero?
       if @cells[i].include?(input)
-        @cells[i] = move
+        @cells[i][input - 1] = chip
         break
       else
         i -= 1

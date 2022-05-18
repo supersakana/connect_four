@@ -18,4 +18,9 @@ class Player
   def winner?
     # code to run
   end
+  
+  # logs each move the player makes
+  def update_history
+    #  code to run
+  end
 end

@@ -26,7 +26,7 @@ class Game
   # general game loop for each round
   def game_loop
     until player_one.winner? || player_two.winner?
-      @board.print_board
+      @board.print_boardkt
       play_round
     end
   end
@@ -60,8 +60,7 @@ class Game
 
   def update(input, player)
     @round += 1
-    p "the board and user history has been updted! #{player.name} - #{input}"
-    @board.update_board(input, player.move)
-    # player.update_history(input)
+    @board.update_board(input, player.chip)
+    player.update_history(input)
   end
 end
