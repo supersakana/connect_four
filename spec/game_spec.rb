@@ -3,6 +3,8 @@
 # rspec spec/game_spec.rb
 # rspec --format documentation spec/game_spec.rb
 
+# rubocop:disable Metrics/BlockLength
+
 require 'pry-byebug'
 require_relative '../lib/game'
 
@@ -112,3 +114,4 @@ describe Game do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
