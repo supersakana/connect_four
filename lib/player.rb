@@ -14,9 +14,22 @@ class Player
     @history = []
   end
 
-  # determines if user has any winning combinations
+  # determines if user history includes winning combo
   def winner?
-    # code to run
+    return if @history.empty?
+
+    @history.any? do |chip|
+      wins = combos(chip)
+      @history.include?(wins)
+    end
+  end
+
+  # returns possible winning combos for a chip
+  def combos(chip)
+    combos = []
+    combos << horizontal(chip)
+    combos << vertical(chip)
+    combos << diagonals(chip)
   end
 
   # logs each move the player makes

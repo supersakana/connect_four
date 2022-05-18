@@ -51,6 +51,17 @@ describe Player do
     end
   end
 
+  describe '#combos' do
+    context 'when a chip is given' do
+      it 'returns the possible winning combinations' do
+        chip = [3, 4]
+        result = []
+        expect(player_one).to receive(:combos).and_return(result)
+        player_one.combos(chip)
+      end
+    end
+  end
+
   describe '#update_history' do
     context 'when a valid input is passed through' do
       it 'adds the correct coordinate to player history' do
