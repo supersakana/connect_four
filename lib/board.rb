@@ -33,9 +33,3 @@ class Board
     end
   end
 end
-
-# test = Board.new
-# test.print_board
-# test.update_board(1, 'X')
-# p ' '
-# test.print_board

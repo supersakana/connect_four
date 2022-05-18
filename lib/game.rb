@@ -61,7 +61,7 @@ class Game
   # updates the game_board and player history
   def update(input, player)
     @round += 1
+    player.update_history(input.to_i, @board.cells)
     @board.update_board(input.to_i, player.chip)
-    # player.update_history(input)
   end
 end

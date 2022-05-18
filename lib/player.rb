@@ -18,9 +18,17 @@ class Player
   def winner?
     # code to run
   end
-  
+
   # logs each move the player makes
-  def update_history
-    #  code to run
+  def update_history(input, hash)
+    i = 6
+    until i.zero?
+      if hash[i].include?(input)
+        @history << [i, hash[i][input - 1]]
+        break
+      else
+        i -= 1
+      end
+    end
   end
 end

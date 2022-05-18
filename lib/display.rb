@@ -2,7 +2,7 @@
 
 # represents the game prompts to be displayed
 module Display
-  
+
   def display_choice(player)
     puts "#{player}, choose a column..."
     gets.chomp
