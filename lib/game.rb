@@ -27,6 +27,8 @@ class Game
   def game_loop
     until player_one.winner? || player_two.winner?
       @board.print_board
+      # p "#{player_one.name} - #{player_one.history}"
+      # p "#{player_two.name} - #{player_two.history}"
       play_round
     end
   end

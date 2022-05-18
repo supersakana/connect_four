@@ -15,6 +15,7 @@ class Player
   end
 
   # determines if user history includes winning combo
+  # to be continued...
   def winner?
     return if @history.empty?
 
@@ -32,12 +33,27 @@ class Player
     combos << diagonals(chip)
   end
 
+  # returns possible horizontal wins
+  def horizontal
+    # code to run
+  end
+
+  # returns possible vertical wins
+  def vertical
+    # code to run
+  end
+
+  # returns possible diagonal wins
+  def diagonals
+    # code to run
+  end
+
   # logs each move the player makes
   def update_history(input, hash)
     i = 6
     until i.zero?
       if hash[i].include?(input)
-        @history << [i, hash[i][input - 1]]
+        @history << [hash[i][input - 1], i]
         break
       else
         i -= 1

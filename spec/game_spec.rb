@@ -103,14 +103,15 @@ describe Game do
   # to be continued
   describe '#update' do
     it 'increments a round by 1' do
-      instance_variable_get(:@board)
-      instance_variable_get(:@round)
+      game.instance_variable_get(:@board)
+      game.instance_variable_set(:@round, 3)
 
       allow(game.board).to receive(:update_board)
       allow(first_player).to receive(:update_history)
+      allow(first_player).to receive(:chip)
 
-      expect(@round).to eq(4)
       game.update(1, first_player)
+      expect(game.round).to eq(4)
     end
   end
 end

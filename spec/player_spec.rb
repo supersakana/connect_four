@@ -19,6 +19,7 @@ describe Player do
     6 => [1, 2, 3, 4, 5, 6, 7]
   }
 
+  # to be continued...
   describe '#winner?' do
     context 'the method returns true when...' do
       it 'matches vertically' do
@@ -51,6 +52,7 @@ describe Player do
     end
   end
 
+  # to be continued...
   describe '#combos' do
     context 'when a chip is given' do
       it 'returns the possible winning combinations' do
@@ -67,7 +69,7 @@ describe Player do
       it 'adds the correct coordinate to player history' do
         player_one.instance_variable_get(:@history)
         player_one.update_history(7, hash)
-        expect(player_one.history[0]).to eq([6, 7])
+        expect(player_one.history[0]).to eq([7, 6])
       end
     end
     context 'when user history already includes coordinates' do
@@ -78,9 +80,9 @@ describe Player do
         hash[6][2] = 'O'
       end
       it 'pushes the data to existing history' do
-        player_one.instance_variable_set(:@history, [[6, 1], [5, 1]])
+        player_one.instance_variable_set(:@history, [[1, 6], [1, 5]])
         player_one.update_history(1, hash)
-        expect(player_one.history[-1]).to eq([4, 1])
+        expect(player_one.history[-1]).to eq([1, 4])
       end
     end
   end
