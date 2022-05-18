@@ -26,7 +26,7 @@ class Game
   # general game loop for each round
   def game_loop
     until player_one.winner? || player_two.winner?
-      @board.print_boardkt
+      @board.print_board
       play_round
     end
   end
@@ -58,9 +58,10 @@ class Game
     valid_inputs.include?(input.to_i)
   end
 
+  # updates the game_board and player history
   def update(input, player)
     @round += 1
-    @board.update_board(input, player.chip)
-    player.update_history(input)
+    @board.update_board(input.to_i, player.chip)
+    # player.update_history(input)
   end
 end
