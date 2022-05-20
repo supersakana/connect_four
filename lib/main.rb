@@ -15,6 +15,7 @@ puts <<~HEREDOC
 HEREDOC
 gets
 
+# initializes new player with name and chip
 def create_player(num, chip)
   puts "Player #{num}, your move is #{chip}. What is your name?"
   name = gets.chomp

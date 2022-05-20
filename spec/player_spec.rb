@@ -20,49 +20,49 @@ describe Player do
   }
 
   # to be continued...
-  describe '#winner?' do
-    context 'the method returns true when...' do
-      it 'matches vertically' do
-        player_one.instance_variable_set(:@history, [[6, 4], [5, 4], [4, 4], [3, 4]])
-        player_one.winner?
-        expect(player_one).to receive(:winner?).and be_truthy
-      end
-      it 'matches horizontally ' do
-        player_one.instance_variable_set(:@history, [[3, 4], [3, 5], [3, 6], [3, 7]])
-        player_one.winner?
-        expect(player_one).to receive(:winner?).and be_truthy
-      end
-      it 'matches diagonally (top left to bottom right)' do
-        player_one.instance_variable_set(:@history, [[2, 3], [3, 4], [4, 5], [5, 6]])
-        player_one.winner?
-        expect(player_one).to receive(:winner?).and be_truthy
-      end
-      it 'matches diagonally (top right to bottom left)' do
-        player_one.instance_variable_set(:@history, [[1, 7], [2, 6], [3, 5], [4, 4]])
-        player_one.winner?
-        expect(player_one).to receive(:winner?).and be_truthy
-      end
-    end
-    context 'the method returns false when...' do
-      it 'the user does not have a winning combination' do
-        player_one.instance_variable_set(:@history, [[6, 1], [6, 4], [5, 1], [4, 1]])
-        player_one.winner?
-        expect(player_one).to receive(:winner?).and be_falsey
-      end
-    end
-  end
+  # describe '#winner?' do
+  #   context 'the method returns true when...' do
+  #     it 'matches vertically' do
+  #       player_one.instance_variable_set(:@history, [[6, 4], [5, 4], [4, 4], [3, 4]])
+  #       player_one.winner?
+  #       expect(player_one).to receive(:winner?).and be_truthy
+  #     end
+  #     it 'matches horizontally ' do
+  #       player_one.instance_variable_set(:@history, [[3, 4], [3, 5], [3, 6], [3, 7]])
+  #       player_one.winner?
+  #       expect(player_one).to receive(:winner?).and be_truthy
+  #     end
+  #     it 'matches diagonally (top left to bottom right)' do
+  #       player_one.instance_variable_set(:@history, [[2, 3], [3, 4], [4, 5], [5, 6]])
+  #       player_one.winner?
+  #       expect(player_one).to receive(:winner?).and be_truthy
+  #     end
+  #     it 'matches diagonally (top right to bottom left)' do
+  #       player_one.instance_variable_set(:@history, [[1, 7], [2, 6], [3, 5], [4, 4]])
+  #       player_one.winner?
+  #       expect(player_one).to receive(:winner?).and be_truthy
+  #     end
+  #   end
+  #   context 'the method returns false when...' do
+  #     it 'the user does not have a winning combination' do
+  #       player_one.instance_variable_set(:@history, [[6, 1], [6, 4], [5, 1], [4, 1]])
+  #       player_one.winner?
+  #       expect(player_one).to receive(:winner?).and be_falsey
+  #     end
+  #   end
+  # end
 
-  # to be continued...
-  describe '#combos' do
-    context 'when a chip is given' do
-      it 'returns the possible winning combinations' do
-        chip = [3, 4]
-        result = []
-        expect(player_one).to receive(:combos).and_return(result)
-        player_one.combos(chip)
-      end
-    end
-  end
+  # # to be continued...
+  # describe '#combos' do
+  #   context 'when a chip is given' do
+  #     it 'returns the possible winning combinations' do
+  #       chip = [3, 4]
+  #       result = []
+  #       expect(player_one).to receive(:combos).and_return(result)
+  #       player_one.combos(chip)
+  #     end
+  #   end
+  # end
 
   describe '#update_history' do
     context 'when a valid input is passed through' do

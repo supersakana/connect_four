@@ -3,6 +3,8 @@
 # rspec spec/board_spec.rb
 # rspec --format documentation spec/board_spec.rb
 
+# rubocop:disable Metrics/BlockLength
+
 require 'pry-byebug'
 require_relative '../lib/board'
 
@@ -30,6 +32,23 @@ describe Board do
       end
     end
   end
+
+  describe '#winner?' do
+    context 'when given a winning combo' do
+      it 'returns true for horizontal match' do
+        game_board.instance_variable_set(:@cells, {
+                                           1 => [1, 2, 3, 4, 5, 6, 7],
+                                           2 => [1, 2, 3, 4, 5, 6, 7],
+                                           3 => [1, 2, 3, 4, 5, 6, 7],
+                                           4 => ['X', 2, 3, 4, 5, 6, 7],
+                                           5 => ['O', 'O', 3, 4, 5, 6, 7],
+                                           6 => ['X', 'X', 'X', 'X', 5, 6, 7]
+                                         })
+        result = game_board.winner?
+        expect(result).to be_truthy
+      end
+    end
+  end
 end
 
 # {
@@ -40,3 +59,7 @@ end
 #  5=>[1, 2, 3, 4, 5, 6, 7],
 #  6=>[1, 2, 3, 4, 5, 6, 7]
 #  }
+
+# test = ["X", "X", "X", "X", 5, 6, 7]
+# wins = ["X", "X", "X", "X"]
+# rubocop:enable Metrics/BlockLength
