@@ -10,7 +10,6 @@ class Board
     @cells = create_board
   end
 
-  # creates a hash with 6  rows and 7 columns
   def create_board
     rows = (1..6).to_a
     cells = {}
@@ -18,19 +17,10 @@ class Board
     cells
   end
 
-  # checks if there is a winning combo in the gameboard
-  def winner?
-    @cells.any? do |_k, v|
-      v.uniq.size == 4
-    end
-  end
-
-  # prints the formatted board
   def print_board
     @cells.each { |row| p row }
   end
 
-  # updates the board with a given player move
   def update_board(input, chip)
     i = 6
     until i.zero?

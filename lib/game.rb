@@ -25,8 +25,10 @@ class Game
 
   # general game loop for each round
   def game_loop
-    until @board.winner?
+    until player_one.winner? || player_two.winner?
       @board.print_board
+      # p "#{player_one.name} - #{player_one.history}"
+      # p "#{player_two.name} - #{player_two.history}"
       play_round
     end
   end
@@ -43,7 +45,6 @@ class Game
     @round.odd? ? @player_one : @player_two
   end
 
-  # verifies the input then updates info unless invalid input
   def verify(input, player)
     if valid?(input)
       update(input, player)
@@ -53,7 +54,6 @@ class Game
     end
   end
 
-  # validates the move by checking avalible columns
   # what if there where no more slots in (number)? How can you return invalid?
   def valid?(input)
     valid_inputs = (1..7).to_a
@@ -63,6 +63,7 @@ class Game
   # updates the game_board and player history
   def update(input, player)
     @round += 1
+    player.update_history(input.to_i, @board.cells)
     @board.update_board(input.to_i, player.chip)
   end
 end
