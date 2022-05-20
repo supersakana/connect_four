@@ -47,6 +47,49 @@ describe Board do
         result = game_board.winner?
         expect(result).to be_truthy
       end
+      it 'returns true for a vertical combo' do
+        game_board.instance_variable_set(:@cells, {
+                                           1 => [1, 2, 3, 4, 5, 6, 7],
+                                           2 => [1, 2, 3, 4, 5, 6, 7],
+                                           3 => ['O', 2, 3, 4, 5, 6, 7],
+                                           4 => ['O', 2, 3, 4, 5, 6, 7],
+                                           5 => ['O', 'O', 3, 4, 5, 6, 7],
+                                           6 => ['O', 'X', 'X', 4, 5, 6, 7]
+                                         })
+        result = game_board.winner?
+        expect(result).to be_truthy
+      end
+      it 'returns true for diagonal combo' do
+        game_board.instance_variable_set(:@cells, {
+                                           1 => [1, 2, 3, 4, 5, 6, 7],
+                                           2 => [1, 2, 3, 4, 5, 6, 7],
+                                           3 => ['1', 2, 3, 'O', 5, 6, 7],
+                                           4 => ['1', 2, 'O', 'O', 5, 6, 7],
+                                           5 => ['1', 'O', 'X', 'O', 5, 6, 7],
+                                           6 => ['O', 'X', 'X', 'X', 5, 6, 7]
+                                         })
+        result = game_board.winner?
+        expect(result).to be_truthy
+      end
+    end
+    context 'when a winning combo is not found' do
+      it 'returns false on an untouched board' do
+        game_board.instance_variable_get(:@cells)
+        result = game_board.winner?
+        expect(result).to be_falsey
+      end
+      it 'returns false if 4 moves exist but not in a row' do
+        game_board.instance_variable_set(:@cells, {
+                                           1 => [1, 2, 3, 4, 5, 6, 7],
+                                           2 => [1, 2, 3, 4, 5, 6, 7],
+                                           3 => [1, 2, 3, 4, 5, 6, 7],
+                                           4 => ['X', 2, 3, 4, 5, 6, 7],
+                                           5 => ['O', 'O', 3, 4, 5, 6, 7],
+                                           6 => ['X', 'X', 'X', 'O', 'X', 6, 7]
+                                         })
+        result = game_board.winner?
+        expect(result).to be_falsey
+      end
     end
   end
 end
@@ -59,7 +102,4 @@ end
 #  5=>[1, 2, 3, 4, 5, 6, 7],
 #  6=>[1, 2, 3, 4, 5, 6, 7]
 #  }
-
-# test = ["X", "X", "X", "X", 5, 6, 7]
-# wins = ["X", "X", "X", "X"]
 # rubocop:enable Metrics/BlockLength
