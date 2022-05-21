@@ -18,36 +18,40 @@ describe Player do
     5 => [1, 2, 3, 4, 5, 6, 7],
     6 => [1, 2, 3, 4, 5, 6, 7]
   }
-
   # to be continued...
   describe '#winner?' do
     context 'the method returns true when...' do
-      it 'matches vertically' do
-        player_one.instance_variable_set(:@history, [[6, 4], [5, 4], [4, 4], [3, 4]])
-        player_one.winner?
-        expect(player_one).to receive(:winner?).and be_truthy
-      end
       it 'matches horizontally ' do
         player_one.instance_variable_set(:@history, [[3, 4], [3, 5], [3, 6], [3, 7]])
-        player_one.winner?
-        expect(player_one).to receive(:winner?).and be_truthy
+        result = player_one.winner?
+        expect(result).to be_truthy
+      end
+      it 'matches vertically' do
+        player_one.instance_variable_set(:@history, [[6, 4], [5, 4], [4, 4], [3, 4]])
+        result = player_one.winner?
+        expect(result).to be_truthy
       end
       it 'matches diagonally (top left to bottom right)' do
         player_one.instance_variable_set(:@history, [[2, 3], [3, 4], [4, 5], [5, 6]])
-        player_one.winner?
-        expect(player_one).to receive(:winner?).and be_truthy
+        result = player_one.winner?
+        expect(result).to be_truthy
       end
       it 'matches diagonally (top right to bottom left)' do
         player_one.instance_variable_set(:@history, [[1, 7], [2, 6], [3, 5], [4, 4]])
-        player_one.winner?
-        expect(player_one).to receive(:winner?).and be_truthy
+        result = player_one.winner?
+        expect(result).to be_truthy
       end
     end
     context 'the method returns false when...' do
       it 'the user does not have a winning combination' do
         player_one.instance_variable_set(:@history, [[6, 1], [6, 4], [5, 1], [4, 1]])
-        player_one.winner?
-        expect(player_one).to receive(:winner?).and be_falsey
+        result = player_one.winner?
+        expect(result).to be_falsey
+      end
+      it 'has 4 chips horizontally but not in a row' do
+        player_one.instance_variable_set(:@history, [[6, 1], [6, 2], [6, 3], [6, 5]])
+        result = player_one.winner?
+        expect(result).to be_falsey
       end
     end
   end

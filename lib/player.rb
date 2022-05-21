@@ -40,7 +40,7 @@ class Player
     neg = [chip]
     3.times { pos << [pos[-1][0], pos[-1][1] + 1] }
     3.times { neg << [neg[-1][0], neg[-1][1] - 1] }
-    # return true if winning_combo?(pos) || winning_combo?(neg)
+    return true if winning_combo?(pos) || winning_combo?(neg)
   end
 
   # returns possible vertical wins for a single chip (positive and negative)
@@ -49,7 +49,7 @@ class Player
     neg = [chip]
     3.times { pos << [pos[-1][0] + 1, pos[-1][1]] }
     3.times { neg << [neg[-1][0] - 1, neg[-1][1]] }
-    # return true if winning_combo?(pos) || winning_combo?(neg)
+    return true if winning_combo?(pos) || winning_combo?(neg)
   end
 
   # returns possible diagonal wins for a single chip (top_left = tl bottom_right = br)
@@ -58,7 +58,7 @@ class Player
     br = [chip]
     3.times { tl << [tl[-1][0] - 1, tl[-1][1] - 1] }
     3.times { br << [br[-1][0] + 1, br[-1][1] + 1] }
-    # return true if winning_combo?(tl) || winning_combo?(br)
+    return true if winning_combo?(tl) || winning_combo?(br)
   end
 
   # returns possible diagonal wins for a single chip (top_left = tl bottom_right = br)
@@ -67,7 +67,7 @@ class Player
     bl = [chip]
     3.times { tr << [tr[-1][0] - 1, tr[-1][1] + 1] }
     3.times { bl << [bl[-1][0] + 1, bl[-1][1] - 1] }
-    # return true if winning_combo?(tr) || winning_combo?(bl)
+    return true if winning_combo?(tr) || winning_combo?(bl)
   end
 
   # checks if all items in a combo are included in the user history
