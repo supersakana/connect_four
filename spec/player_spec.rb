@@ -53,6 +53,21 @@ describe Player do
         result = player_one.winner?
         expect(result).to be_falsey
       end
+      it 'has 4 chips vertically but not in a row' do
+        player_one.instance_variable_set(:@history, [[6, 1], [5, 1], [4, 1], [2, 1]])
+        result = player_one.winner?
+        expect(result).to be_falsey
+      end
+      it 'has 4 chips diagonally but not in a row (top left bottom right)' do
+        player_one.instance_variable_set(:@history, [[2, 3], [3, 4], [4, 5], [6, 7]])
+        result = player_one.winner?
+        expect(result).to be_falsey
+      end
+      it 'has 4 chips diagonally but not in a row (top right bottom left)' do
+        player_one.instance_variable_set(:@history, [[1, 7], [2, 6], [3, 5], [5, 3]])
+        result = player_one.winner?
+        expect(result).to be_falsey
+      end
     end
   end
 
@@ -93,9 +108,3 @@ describe Player do
 end
 
 # rubocop:enable Metrics/BlockLength
-
-# vertical win
-@history = [[6, 4], [5, 4], [4, 4], [3, 4]]
-
-# horizontal win
-@history = [[3, 4], [3, 5], [3, 6], [3, 7]]
