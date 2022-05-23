@@ -4,10 +4,11 @@ require 'pry-byebug'
 
 # represents the game board interface
 class Board
-  attr_reader :cells
+  attr_reader :cells, :top_row
 
   def initialize
     @cells = create_board
+    @top_row = @cells[1]
   end
 
   def create_board

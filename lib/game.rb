@@ -44,8 +44,8 @@ class Game
   end
 
   def verify(input, player)
-    if valid?(input)
-      update(input, player)
+    if valid?(input.to_i)
+      update(input.to_i, player)
     else
       display_error
       play_round
@@ -54,14 +54,13 @@ class Game
 
   # what if there where no more slots in (number)? How can you return invalid?
   def valid?(input)
-    valid_inputs = (1..7).to_a
-    valid_inputs.include?(input.to_i)
+    input.between?(1, 7) && @board.top_row[input - 1].zero?
   end
 
   # updates the game_board and player history
   def update(input, player)
     @round += 1
-    player.update_history(input.to_i, @board.cells)
-    @board.update_board(input.to_i, player.chip)
+    player.update_history(input, @board.cells)
+    @board.update_board(input, player.chip)
   end
 end
