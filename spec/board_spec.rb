@@ -18,15 +18,15 @@ describe Board do
       end
       it 'updates the lowest row with existing chips' do
         game_board.instance_variable_set(:@cells, {
-                                           1 => [1, 2, 3, 4, 5, 6, 7],
-                                           2 => [1, 2, 3, 4, 5, 6, 7],
-                                           3 => [1, 2, 3, 4, 5, 6, 7],
-                                           4 => ['X', 2, 3, 4, 5, 6, 7],
-                                           5 => ['O', 'O', 3, 4, 5, 6, 7],
-                                           6 => ['X', 'X', 'X', 4, 5, 6, 7]
+                                           1 => [0, 0, 0, 0, 0, 0, 0],
+                                           2 => [0, 0, 0, 0, 0, 0, 0],
+                                           3 => [0, 0, 0, 0, 0, 0, 0],
+                                           4 => [0, 0, 0, 0, 0, 0, 0],
+                                           5 => [2, 2, 0, 0, 0, 0, 0],
+                                           6 => [1, 1, 1, 0, 0, 0, 0]
                                          })
-        game_board.update_board(2, 'O')
-        expect(game_board.cells[4][1]).to eq('O')
+        game_board.update_board(2, 2)
+        expect(game_board.cells[4][1]).to eq(2)
       end
     end
   end

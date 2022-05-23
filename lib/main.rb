@@ -22,7 +22,7 @@ def create_player(num, chip)
   Player.new(name, chip)
 end
 
-player_one = create_player(1, 'X')
-player_two = create_player(2, 'O')
+player_one = create_player(1, 1)
+player_two = create_player(2, 2)
 game = Game.new(player_one, player_two)
 game.play

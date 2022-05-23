@@ -81,8 +81,8 @@ class Player
   def update_history(input, hash)
     i = 6
     until i.zero?
-      if hash[i].include?(input)
-        @history << [hash[i][input - 1], i]
+      if hash[i][input - 1].zero?
+        @history << [input - 1, i]
         break
       else
         i -= 1

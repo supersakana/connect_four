@@ -100,7 +100,6 @@ describe Game do
     end
   end
 
-  # to be continued
   describe '#update' do
     it 'increments a round by 1' do
       game.instance_variable_get(:@board)
