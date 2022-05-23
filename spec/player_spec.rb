@@ -11,12 +11,12 @@ require_relative '../lib/player'
 describe Player do
   subject(:player_one) { described_class.new('Zac', 'X') }
   hash = {
-    1 => [1, 2, 3, 4, 5, 6, 7],
-    2 => [1, 2, 3, 4, 5, 6, 7],
-    3 => [1, 2, 3, 4, 5, 6, 7],
-    4 => [1, 2, 3, 4, 5, 6, 7],
-    5 => [1, 2, 3, 4, 5, 6, 7],
-    6 => [1, 2, 3, 4, 5, 6, 7]
+    1 => [0, 0, 0, 0, 0, 0, 0],
+    2 => [0, 0, 0, 0, 0, 0, 0],
+    3 => [0, 0, 0, 0, 0, 0, 0],
+    4 => [0, 0, 0, 0, 0, 0, 0],
+    5 => [0, 0, 0, 0, 0, 0, 0],
+    6 => [0, 0, 0, 0, 0, 0, 0]
   }
   # to be continued...
   describe '#winner?' do
@@ -88,20 +88,20 @@ describe Player do
       it 'adds the correct coordinate to player history' do
         player_one.instance_variable_get(:@history)
         player_one.update_history(7, hash)
-        expect(player_one.history[0]).to eq([7, 6])
+        expect(player_one.history[0]).to eq([6, 6])
       end
     end
     context 'when user history already includes coordinates' do
       before do
-        hash[6][0] = 'X'
-        hash[6][1] = 'O'
-        hash[5][0] = 'X'
-        hash[6][2] = 'O'
+        hash[6][0] = 1
+        hash[6][1] = 2
+        hash[5][0] = 1
+        hash[6][2] = 2
       end
       it 'pushes the data to existing history' do
         player_one.instance_variable_set(:@history, [[1, 6], [1, 5]])
         player_one.update_history(1, hash)
-        expect(player_one.history[-1]).to eq([1, 4])
+        expect(player_one.history[-1]).to eq([0, 4])
       end
     end
   end
