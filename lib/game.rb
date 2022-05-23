@@ -29,6 +29,8 @@ class Game
       @board.print_board
       play_round
     end
+    winner = player_one.winner? ? player_one.name : player_two.name
+    display_winner(winner)
   end
 
   # displays prompt for user to make choice
@@ -54,7 +56,7 @@ class Game
 
   # what if there where no more slots in (number)? How can you return invalid?
   def valid?(input)
-    input.between?(1, 7) && @board.top_row[input - 1].zero?
+    input.to_i.between?(1, 7) && @board.top_row[input - 1].zero?
   end
 
   # updates the game_board and player history

@@ -19,6 +19,7 @@ describe Game do
         allow(first_player).to receive(:winner?).and_return(false, true)
         allow(second_player).to receive(:winner?).and_return(false)
         allow(game).to receive(:play_round)
+        allow(game).to receive(:display_winner)
       end
       it 'prints the game board' do
         game.instance_variable_get(:@board)
@@ -86,14 +87,14 @@ describe Game do
   describe '#valid?' do
     context 'when a valid input is passed' do
       it 'returns true' do
-        valid_input = '2'
+        valid_input = 2
         result = game.valid?(valid_input)
         expect(result).to be_truthy
       end
     end
     context 'when an invalid input is passed' do
       it 'returns false' do
-        invalid_input = '0'
+        invalid_input = 'z'
         result = game.valid?(invalid_input)
         expect(result).to be_falsey
       end
