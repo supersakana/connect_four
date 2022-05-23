@@ -1,11 +1,9 @@
 # Connect Four
 
-This is going to be my first attempt at creating a Test Driven Project with RSpec.
+A command line game built with ruby and tested with rspec
 
-## Code Notes
+This is my first ever test driven project (the first of more to come).
 
-- Any method with 'display' is located in the display module.
+Project Description: https://www.theodinproject.com/lessons/ruby-connect-four
 
-## Helpful Resources
-
-### Magic Tricks Of Testing | https://www.youtube.com/watch?v=URSWYvyc42M
+Enjoy!

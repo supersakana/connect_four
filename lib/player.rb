@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry-byebug'
-
 # represents the Player functionality
 class Player
   attr_reader :name, :chip
@@ -15,7 +13,6 @@ class Player
   end
 
   # determines if user history includes winning combo
-  # to be continued...
   def winner?
     return if @history.empty?
 
@@ -25,7 +22,7 @@ class Player
     end
   end
 
-  # returns possible winning combos for a chip
+  # returns list of boolean values of winning moves
   def combos(chip)
     combos = []
     combos << horizontal(chip)
@@ -52,19 +49,19 @@ class Player
     return true if winning_combo?(pos) || winning_combo?(neg)
   end
 
-  # returns possible diagonal wins for a single chip (top_left = tl bottom_right = br)
+  # returns possible diagonal wins for a single chip
   def left_diagonals(chip)
-    tl = [chip]
-    br = [chip]
+    tl = [chip] # tl = top left
+    br = [chip] # br = bottom right
     3.times { tl << [tl[-1][0] - 1, tl[-1][1] - 1] }
     3.times { br << [br[-1][0] + 1, br[-1][1] + 1] }
     return true if winning_combo?(tl) || winning_combo?(br)
   end
 
-  # returns possible diagonal wins for a single chip (top_left = tl bottom_right = br)
+  # returns possible diagonal wins for a single chip
   def right_diagonals(chip)
-    tr = [chip]
-    bl = [chip]
+    tr = [chip] # tr = top right
+    bl = [chip] # bl = bottom left
     3.times { tr << [tr[-1][0] - 1, tr[-1][1] + 1] }
     3.times { bl << [bl[-1][0] + 1, bl[-1][1] - 1] }
     return true if winning_combo?(tr) || winning_combo?(bl)
@@ -77,7 +74,7 @@ class Player
     end
   end
 
-  # logs each move the player makes
+  # updates the user history with each slot the user fills
   def update_history(input, hash)
     i = 6
     until i.zero?

@@ -16,13 +16,13 @@ HEREDOC
 gets
 
 # initializes new player with name and chip
-def create_player(num, chip)
-  puts "Player #{num}, your move is #{chip}. What is your name?"
+def create_player(num)
+  puts "Player #{num}, your chip is #{num}. What is your name?"
   name = gets.chomp
-  Player.new(name, chip)
+  Player.new(name, num)
 end
 
-player_one = create_player(1, 1)
-player_two = create_player(2, 2)
+player_one = create_player(1)
+player_two = create_player(2)
 game = Game.new(player_one, player_two)
 game.play

@@ -5,7 +5,6 @@
 
 # rubocop:disable Metrics/BlockLength
 
-require 'pry-byebug'
 require_relative '../lib/player'
 
 describe Player do
@@ -67,18 +66,6 @@ describe Player do
         player_one.instance_variable_set(:@history, [[1, 7], [2, 6], [3, 5], [5, 3]])
         result = player_one.winner?
         expect(result).to be_falsey
-      end
-    end
-  end
-
-  # to be continued...
-  describe '#combos' do
-    context 'when a chip is given' do
-      it 'returns the possible winning combinations' do
-        chip = [3, 4]
-        result = []
-        expect(player_one).to receive(:combos).and_return(result)
-        player_one.combos(chip)
       end
     end
   end

@@ -5,7 +5,6 @@
 
 # rubocop:disable Metrics/BlockLength
 
-require 'pry-byebug'
 require_relative '../lib/game'
 
 describe Game do

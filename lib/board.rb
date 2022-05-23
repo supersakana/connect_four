@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry-byebug'
-
 # represents the game board interface
 class Board
   attr_reader :cells, :top_row
@@ -11,6 +9,7 @@ class Board
     @top_row = @cells[1]
   end
 
+  # creates 6 rows of 0s (open slots)
   def create_board
     rows = (1..6).to_a
     cells = {}
@@ -18,6 +17,7 @@ class Board
     cells
   end
 
+  # formats the board
   def print_board
     p '1  2  3  4  5  6  7'
     p '-------------------'
@@ -26,6 +26,7 @@ class Board
     end
   end
 
+  # updates the board with chip when given an input
   def update_board(input, chip)
     i = 6
     until i.zero?
