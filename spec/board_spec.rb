@@ -3,6 +3,8 @@
 # rspec spec/board_spec.rb
 # rspec --format documentation spec/board_spec.rb
 
+# rubocop:disable Metrics/BlockLength
+
 require_relative '../lib/board'
 
 describe Board do
@@ -29,4 +31,28 @@ describe Board do
       end
     end
   end
+
+  describe '#tie?' do
+    context 'when the board is not filled with chips' do
+      it 'returns false' do
+        result = game_board.tie?
+        expect(result).to be_falsey
+      end
+    end
+    context 'when the board is filled with chips' do
+      it 'returns true' do
+        game_board.instance_variable_set(:@cells, {
+                                           1 => [2, 1, 2, 1, 2, 1, 2],
+                                           2 => [2, 1, 2, 1, 2, 1, 2],
+                                           3 => [1, 2, 1, 2, 1, 2, 1],
+                                           4 => [1, 2, 1, 2, 1, 2, 1],
+                                           5 => [2, 1, 2, 1, 2, 1, 2],
+                                           6 => [1, 2, 1, 2, 1, 2, 1]
+                                         })
+        result = game_board.tie?
+        expect(result).to be_truthy
+      end
+    end
+  end
 end
+# rubocop:enable Metrics/BlockLength

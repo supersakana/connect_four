@@ -38,4 +38,10 @@ class Board
       end
     end
   end
+
+  def tie?
+    @cells.none? do |_k, v|
+      v.include?(0)
+    end
+  end
 end
