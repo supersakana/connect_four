@@ -113,5 +113,30 @@ describe Game do
       expect(game.round).to eq(4)
     end
   end
+
+  describe '#determine_winner' do
+    context 'when the game is tied' do
+      it 'returns the tie message' do
+        game.instance_variable_get(:@board)
+        allow(game.board).to receive(:tie?).and_return(true)
+        expect(game).to receive(:display_tie).once
+        game.determine_winner
+      end
+    end
+    context 'when a winner is determined' do
+      it 'returns player one winner message if player one wins' do
+        allow(first_player).to receive(:winner?).and_return(true)
+        message = 'Zac wins!!!!!'
+        expect(game).to receive(:determine_winner).and_return(message)
+        game.determine_winner
+      end
+      it 'returns player two winner message if player two wins' do
+        allow(first_player).to receive(:winner?).and_return(false)
+        message = 'Zoe wins!!!!!'
+        expect(game).to receive(:determine_winner).and_return(message)
+        game.determine_winner
+      end
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength

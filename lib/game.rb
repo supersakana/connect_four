@@ -28,8 +28,7 @@ class Game
       @board.print_board
       play_round
     end
-    winner = player_one.winner? ? player_one.name : player_two.name
-    display_winner(winner)
+    determine_winner
   end
 
   # displays prompt for user to make choice
@@ -63,5 +62,13 @@ class Game
     @round += 1
     player.update_history(input, @board.cells)
     @board.update_board(input, player.chip)
+  end
+
+  # declares winner or tie
+  def determine_winner
+    return display_tie if @board.tie?
+
+    winner = player_one.winner? ? player_one.name : player_two.name
+    display_winner(winner)
   end
 end

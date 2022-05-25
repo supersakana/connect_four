@@ -14,4 +14,8 @@ module Display
   def display_winner(player)
     puts "#{player} wins!!!!!"
   end
+
+  def display_tie
+    puts 'It is a tie!'
+  end
 end
